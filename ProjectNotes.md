@@ -14,6 +14,9 @@
 
 > Notas Gerais
 
+1. O sistema deverá conter biometria?
+2. As catracas usar API ou um software próprio?
+
 ## Learning
 
 > C++

@@ -22,6 +22,8 @@ class MainWindow: public QMainWindow{
         /*Action Slots*/
         void actHlpAboutTriggered();
         void actRcdClientsTriggered();
+        void actSysUsersTriggered();
+        void actSysPreferencesTriggered();
     private:
         /*Auxiliary function used to configure the UI*/
         void setupUi();
@@ -31,14 +33,27 @@ class MainWindow: public QMainWindow{
         void createStatusBar();
 
 
-
-        /*Actions*/
-        QAction *actHlpAbout;
+        /*ACTIONS*/
+        /*Records Actions (Rcd)*/
         QAction *actRcdClients;
+        QAction *actRcdProfiles;
 
-        /*Menus*/
-        QMenu *mnuHelp;   //Hlp
-        QMenu *mnuRecords;//Rcd
+        /*System Actions (Sys)*/
+        QAction *actSysUsers;
+        QAction *actSysPreferences;
+
+        /*Help Actions (Hlp)*/
+        QAction *actHlpAbout;
+
+
+        /*MENUS*/
+        QMenu *mnuRecords;      //Rcd
+        QMenu *mnuSystem;       //Sys
+        QMenu *mnuCashFlow;     //Csf
+        QMenu *mnuWorkSchedule; //Wks (Escala)
+        QMenu *mnuReports;      //Rpt
+        QMenu *mnuTurnstile;    //Trn (Catraca)
+        QMenu *mnuHelp;         //Hlp
 
         /*ToolsBar*/
         QToolBar *tbrRecordsTools;

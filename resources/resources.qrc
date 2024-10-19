@@ -3,5 +3,8 @@
         <file>images/gym_main.png</file>
         <file>images/about.png</file>
         <file>images/client.png</file>
+        <file>images/user.png</file>
+        <file>images/preferences.png</file>
+        <file>images/profiles.png</file>
     </qresource>
 </RCC>
