@@ -24,6 +24,8 @@ class MainWindow: public QMainWindow{
         void actRcdClientsTriggered();
         void actSysUsersTriggered();
         void actSysPreferencesTriggered();
+        void actRcdTrainerTriggered();
+        void actRcdProfilesTriggered();
     private:
         /*Auxiliary function used to configure the UI*/
         void setupUi();
@@ -34,25 +36,31 @@ class MainWindow: public QMainWindow{
 
 
         /*ACTIONS*/
-        /*Records Actions (Rcd)*/
+        /*Records (Rcd) Actions*/
         QAction *actRcdClients;
         QAction *actRcdProfiles;
+        QAction *actRcdTrainer;
 
-        /*System Actions (Sys)*/
+        /*CashFlow (Csf) Actions*/
+        QAction *actCsfReceipts; //(pt_br: Recebimentos)
+        QAction *actCsfPayment;  //(pt_br: Pagamentos)
+        QAction *actCsfTypes;    //
+
+        /*System (Sys) Actions*/
         QAction *actSysUsers;
         QAction *actSysPreferences;
 
-        /*Help Actions (Hlp)*/
+        /*Help (Hlp) Actions*/
         QAction *actHlpAbout;
 
 
         /*MENUS*/
         QMenu *mnuRecords;      //Rcd
-        QMenu *mnuSystem;       //Sys
         QMenu *mnuCashFlow;     //Csf
-        QMenu *mnuWorkSchedule; //Wks (Escala)
+        QMenu *mnuWorkSchedule; //Wks (pt_br: Escala)
         QMenu *mnuReports;      //Rpt
-        QMenu *mnuTurnstile;    //Trn (Catraca)
+        QMenu *mnuTurnstile;    //Trn (pt_br: Catraca)
+        QMenu *mnuSystem;       //Sys
         QMenu *mnuHelp;         //Hlp
 
         /*ToolsBar*/

@@ -6,5 +6,9 @@
         <file>images/user.png</file>
         <file>images/preferences.png</file>
         <file>images/profiles.png</file>
+        <file>images/trainer.png</file>
+        <file>images/receipt.png</file>
+        <file>images/payment.png</file>
+        <file>images/cash_flow_types.png</file>
     </qresource>
 </RCC>
