@@ -20,12 +20,31 @@ class MainWindow: public QMainWindow{
         MainWindow(QWidget* parent = nullptr);
     private slots:
         /*Action Slots*/
-        void actHlpAboutTriggered();
+        //Rcd
         void actRcdClientsTriggered();
-        void actSysUsersTriggered();
-        void actSysPreferencesTriggered();
         void actRcdTrainerTriggered();
         void actRcdProfilesTriggered();
+        //Csf
+        void actCsfReceiptsTriggered();
+        void actCsfPaymentTriggered();
+        void actCsfTypesTriggered();
+        //Wls
+        void actWksScheduleTriggered();
+        void actWksCalendarTriggered();
+        //Shp
+        void actShpProductsTriggered();
+        void actShpSaleTriggered();
+        //Tng
+        void actTngAddExercisesTriggered();
+        void actTngTrainingTriggered();
+        //Eqp
+        void actEqpNewEquipmentTriggered();
+        //Sys
+        void actSysUsersTriggered();
+        void actSysPreferencesTriggered();
+        //Hlp
+        void actHlpAboutTriggered();
+        void actHlpDocumentationTriggered();
     private:
         /*Auxiliary function used to configure the UI*/
         void setupUi();
@@ -34,8 +53,8 @@ class MainWindow: public QMainWindow{
         void createToolBar();
         void createStatusBar();
 
-
         /*ACTIONS*/
+
         /*Records (Rcd) Actions*/
         QAction *actRcdClients;
         QAction *actRcdProfiles;
@@ -46,12 +65,30 @@ class MainWindow: public QMainWindow{
         QAction *actCsfPayment;  //(pt_br: Pagamentos)
         QAction *actCsfTypes;    //
 
+        /*Training (Tng) Actions*/
+        QAction *actTngAddExercises; //
+        QAction *actTngTraining;     //
+
+        /*WorkSchedule (Wks) Actions*/
+        QAction *actWksSchedule; //(pt_br: Agenda)
+        QAction *actWksCalendar; //(pt_br: Calendário)
+
+        /*Shop (Shp) Actions*/
+        QAction *actShpProducts;
+        QAction *actShpSale;
+        QAction *actShp;
+        //QAction *actShp;
+
+        /*Equipament (Eqp) Actions*/
+        QAction *actEqpNewEquipment; //
+
         /*System (Sys) Actions*/
         QAction *actSysUsers;
         QAction *actSysPreferences;
 
         /*Help (Hlp) Actions*/
         QAction *actHlpAbout;
+        QAction *actHlpDocumentation;
 
 
         /*MENUS*/
@@ -60,6 +97,9 @@ class MainWindow: public QMainWindow{
         QMenu *mnuWorkSchedule; //Wks (pt_br: Escala)
         QMenu *mnuReports;      //Rpt
         QMenu *mnuTurnstile;    //Trn (pt_br: Catraca)
+        QMenu *mnuShop;         //Shp
+        QMenu *mnuEquipment;    //Eqp (pt_br: Equipamento)
+        QMenu *mnuTraining;     //Tng
         QMenu *mnuSystem;       //Sys
         QMenu *mnuHelp;         //Hlp
 

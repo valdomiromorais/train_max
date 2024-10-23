@@ -1,4 +1,4 @@
-QT += widgets sql
+QT += core widgets sql graphs
 
 SOURCES += \
     src/main.cpp \

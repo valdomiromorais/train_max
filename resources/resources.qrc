@@ -10,5 +10,13 @@
         <file>images/receipt.png</file>
         <file>images/payment.png</file>
         <file>images/cash_flow_types.png</file>
+        <file>images/documentation.png</file>
+        <file>images/schedule.png</file>
+        <file>images/calendar.png</file>
+        <file>images/products.png</file>
+        <file>images/sale.png</file>
+        <file>images/equipaments.png</file>
+        <file>images/exercises.png</file>
+        <file>images/training.png</file>
     </qresource>
 </RCC>
