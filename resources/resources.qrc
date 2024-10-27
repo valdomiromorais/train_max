@@ -18,5 +18,7 @@
         <file>images/equipaments.png</file>
         <file>images/exercises.png</file>
         <file>images/training.png</file>
+        <file>images/maromba.png</file>
+        <file>style.qss</file>
     </qresource>
 </RCC>

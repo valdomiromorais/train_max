@@ -7,8 +7,12 @@
 #include <QLayout>
 #include <QLabel>
 #include <QMessageBox>
+#include <QDockWidget>
+//#include <QWebEngineView>
+
 //My includes
 #include "include/main_window.h"
+#include "include/dlg_register_clients.h"
 
 
 MainWindow::MainWindow(QWidget *parent):QMainWindow(parent){
@@ -26,9 +30,31 @@ void MainWindow::setupUi(){
     createMenus();
     createToolBar();
     createStatusBar();
+    createDockWidget();
+    criarCentralWidget();
 }//setupUi
 
-QAction* MainWindow::createAction(QString name, QString icon_path, QString tool_tip, QString short_cut, QString status_tip){
+void MainWindow::criarCentralWidget(){
+    lblCentral = new QLabel(this);
+    lblCentral->setPixmap(QPixmap(":/images/maromba.png"));
+    //lblCentral->setStyleSheet("background:'#E6E7E9'");
+    lblCentral->setFrameShape(QFrame::Box);
+    lblCentral->setAlignment(Qt::AlignCenter);
+
+    setCentralWidget(lblCentral);
+}
+
+
+void MainWindow::createDockWidget(){
+    dkwSite = new QDockWidget(tr("Testando QDockWidgets"),this);
+    dkwSite->setAllowedAreas( Qt::RightDockWidgetArea );
+    dkwSite->setWidget(new QLabel("TESTE"));
+    addDockWidget(Qt::RightDockWidgetArea, dkwSite);
+}
+
+QAction* MainWindow::createAction(QString name, QString icon_path,
+                                  QString tool_tip, QString short_cut,
+                                  QString status_tip){
     QAction *an_action = new QAction(name,this);
     an_action->setIcon(QIcon(icon_path));
     an_action->setToolTip(tool_tip);
@@ -239,7 +265,12 @@ void MainWindow::actRcdProfilesTriggered(){
 }
 
 void MainWindow::actRcdClientsTriggered(){
-    QMessageBox::warning(this,"Warning", "Registro de Clientes em construção!");
+
+    DlgRegisterClients rgc(this);
+
+    rgc.exec();
+
+    //QMessageBox::warning(this,"Warning", "Registro de Clientes em construção!");
 }
 
 //Csf

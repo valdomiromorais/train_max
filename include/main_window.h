@@ -7,6 +7,8 @@ class QMenu;
 class QAction;
 class QToolBar;
 class QStatusBar;
+class QDockWidget;
+class QLabel;
 
 /**
  * This class represents the main window of the application.
@@ -17,7 +19,7 @@ class MainWindow: public QMainWindow{
     Q_OBJECT
 
     public:
-        MainWindow(QWidget* parent = nullptr);
+        explicit MainWindow(QWidget* parent = nullptr);
     private slots:
         /*Action Slots*/
         //Rcd
@@ -52,10 +54,12 @@ class MainWindow: public QMainWindow{
         void createMenus();
         void createToolBar();
         void createStatusBar();
+        void createDockWidget();
+        void criarCentralWidget();
 
-        QAction* createAction( QString name="", QString icon_path = "",
+        QAction* createAction(QString name="", QString icon_path = "",
                              QString tool_tip = "", QString short_cut="",
-                             QString status_tip="");
+                              QString status_tip="");
 
         /*ACTIONS*/
 
@@ -109,6 +113,12 @@ class MainWindow: public QMainWindow{
 
         /*ToolsBar*/
         QToolBar *tbrRecordsTools;
+
+        /*Central Widget*/
+        QLabel *lblCentral;
+
+        /*DockWidgets*/
+        QDockWidget *dkwSite;
 
 
 };//end class
