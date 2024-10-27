@@ -28,131 +28,117 @@ void MainWindow::setupUi(){
     createStatusBar();
 }//setupUi
 
+QAction* MainWindow::createAction(QString name, QString icon_path, QString tool_tip, QString short_cut, QString status_tip){
+    QAction *an_action = new QAction(name,this);
+    an_action->setIcon(QIcon(icon_path));
+    an_action->setToolTip(tool_tip);
+    an_action->setShortcut(QKeySequence(short_cut));
+    an_action->setStatusTip(status_tip);
+
+    return an_action;
+}
+
 void MainWindow::createActions(){
 
-    /*Records (Rcd) Actions*/
-    actRcdClients = new QAction(tr("Clients"));
-    actRcdClients->setIcon(QIcon("://images/client.png"));
-    actRcdClients->setToolTip(tr("Client registration"));
-    actRcdClients->setShortcut(QKeySequence("Ctrl+N"));
-    actRcdClients->setStatusTip(tr("Registration of new clients for your gym."));
+    actRcdClients = createAction( tr("Clients"),"://images/client.png",
+                                    tr("Client registration"),"Ctrl+N",
+                                    "Registration of new clients for your gym.");
     connect(actRcdClients, &QAction::triggered, this, &MainWindow::actRcdClientsTriggered);
 
-    actRcdTrainer = new QAction(tr("Trainer"));
-    actRcdTrainer->setIcon(QIcon("://images/trainer.png"));
-    actRcdTrainer->setToolTip(tr("Trainer registration"));
-    actRcdTrainer->setShortcut(QKeySequence("Ctrl+T"));
-    actRcdTrainer->setStatusTip(tr("Registration of new trainer for your gym."));
-    connect(actRcdTrainer, &QAction::triggered, this, &MainWindow::actRcdTrainerTriggered);
+    actRcdTrainer = createAction( tr("Trainer"),"://images/trainer.png",
+                                    tr("Trainer registration"),"Ctrl+T",
+                                    "Registration of new trainer for your gym.");
+     connect(actRcdTrainer, &QAction::triggered, this, &MainWindow::actRcdTrainerTriggered);
 
-    actRcdProfiles = new QAction(tr("Profiles"));
-    actRcdProfiles->setIcon(QIcon("://images/profiles.png"));
-    actRcdProfiles->setToolTip(tr("Client profiles registration"));
-    //actRcdProfiles->setShortcut(QKeySequence("Ctrl+P"));
-    actRcdProfiles->setStatusTip(tr("Registration of new clients profiles for your gym."));
-    connect(actRcdProfiles, &QAction::triggered, this, &MainWindow::actRcdProfilesTriggered);
+     actRcdProfiles = createAction( tr("Profiles"),"://images/profiles.png",
+                                      tr("Client profiles registration"),"Ctrl+P",
+                                      "Registration of new clients profiles for your gym.");
+     connect(actRcdProfiles, &QAction::triggered, this, &MainWindow::actRcdProfilesTriggered);
 
-    /*CashFlow (Csf) Actions*/
-    actCsfReceipts = new QAction(tr("Receipts"));
-    actCsfReceipts->setIcon(QIcon("://images/receipt.png"));
-    actCsfReceipts->setToolTip(tr("Receipts registration"));
-    actCsfReceipts->setShortcut(QKeySequence("Ctrl+R"));
-    actCsfReceipts->setStatusTip(tr("Registration of new receipt."));
+     /*CashFlow (Csf) Actions*/
+    actCsfReceipts = createAction( tr("Receipts"),"://images/receipt.png",
+                                     tr("Receipts registration"),"Ctrl+R",
+                                     "Registration of new receipt.");
     connect(actCsfReceipts, &QAction::triggered, this, &MainWindow::actCsfReceiptsTriggered);
 
-    actCsfPayment = new QAction(tr("Payment"));
-    actCsfPayment->setIcon(QIcon("://images/payment.png"));
-    actCsfPayment->setToolTip(tr("Payment registration"));
-    actCsfPayment->setShortcut(QKeySequence("Ctrl+P"));
-    actCsfPayment->setStatusTip(tr("Registration of new payments."));
+    actCsfPayment = createAction( tr("Payment"),"://images/payment.png",
+                                    tr("Payment registration"),"Ctrl+P",
+                                    "Registration of new payments.");
     connect(actCsfPayment, &QAction::triggered, this, &MainWindow::actCsfPaymentTriggered);
 
-    actCsfTypes = new QAction(tr("Cash Flow Types"));
-    actCsfTypes->setIcon(QIcon("://images/cash_flow_types.png"));
-    actCsfTypes->setToolTip(tr("Cash flow types registration"));
-    //actCsfTypes->setShortcut(QKeySequence("Ctrl+F"));
-    actCsfTypes->setStatusTip(tr("Registration of new cash flow types."));
+
+    actCsfTypes = createAction( tr("Cash Flow Types"),"://images/cash_flow_types.png",
+                                   tr("Cash flow types registration"),"Ctrl+F",
+                                   "Registration of new cash flow types.");
     connect(actCsfTypes, &QAction::triggered, this, &MainWindow::actCsfTypesTriggered);
 
     /*Shop (Shp) Actions*/
-    actShpSale = new QAction(tr("Shop Sale"));
-    actShpSale->setIcon(QIcon("://images/sale.png"));
-    actShpSale->setToolTip(tr("Make a sale for your store"));
-    //actShpSale->setShortcut(QKeySequence("Ctrl+F"));
-    actShpSale->setStatusTip(tr("Make a direct sale to your customer in your store"));
+
+    actShpSale = createAction( tr("Shop Sale"),"://images/sale.png",
+                                 tr("Make a sale for your store"),"Ctrl+G",
+                                 "Make a direct sale to your customer in your store");
     connect(actShpSale, &QAction::triggered, this, &MainWindow::actShpSaleTriggered);
 
-    actShpProducts = new QAction(tr("Shop Products"));
-    actShpProducts->setIcon(QIcon("://images/products.png"));
-    actShpProducts->setToolTip(tr("Registering new products."));
-    //actShpProducts->setShortcut(QKeySequence("Ctrl+F"));
-    actShpProducts->setStatusTip(tr("Registering new products for your store."));
+    actShpProducts = createAction( tr("Shop Products"),"://images/products.png",
+                                     tr("Registering new products."),"Ctrl+B",
+                                     "Registering new products for your store.");
     connect(actShpProducts, &QAction::triggered, this, &MainWindow::actShpProductsTriggered);
 
     /*Equipament (Eqp) Actions*/
-    actEqpNewEquipment = new QAction(tr("New Equipament"));
-    actEqpNewEquipment->setIcon(QIcon("://images/equipaments.png"));
-    actEqpNewEquipment->setToolTip(tr("Registering new equipament."));
-    //actEqpNewEquipment->setShortcut(QKeySequence("Ctrl+F"));
-    actEqpNewEquipment->setStatusTip(tr("Registering new equipament for your gym."));
+
+    actEqpNewEquipment = createAction( tr("New Equipament"),"://images/equipaments.png",
+                                         tr("Registering new equipament."),"Ctrl+E",
+                                         "Registering new equipament for your gym.");
     connect(actEqpNewEquipment, &QAction::triggered, this, &MainWindow::actEqpNewEquipmentTriggered);
 
     /*Training (Tng) Actions*/
-    actTngAddExercises = new QAction(tr("Add Exercises"));
-    actTngAddExercises->setIcon(QIcon("://images/exercises.png"));
-    actTngAddExercises->setToolTip(tr("Registering new exercise type."));
-    //actTngAddExercises->setShortcut(QKeySequence("Ctrl+F"));
-    actTngAddExercises->setStatusTip(tr("Registering new exercise type."));
+
+    actTngAddExercises = createAction( tr("Add Exercises"),"://images/exercises.png",
+                                         tr("Registering new exercise type."),"Ctrl+",
+                                         "Registering new exercise type.");
     connect(actTngAddExercises, &QAction::triggered, this, &MainWindow::actTngAddExercisesTriggered);
 
-    actTngTraining = new QAction(tr("Add Training"));
-    actTngTraining->setIcon(QIcon("://images/training.png"));
-    actTngTraining->setToolTip(tr("Registering new training."));
-    //actTngTraining->setShortcut(QKeySequence("Ctrl+F"));
-    actTngTraining->setStatusTip(tr("Registering new exercise type."));
+    actTngTraining = createAction( tr("Add Training"),"://images/training.png",
+                                         tr("Registering new training."),"Ctrl+",
+                                         "Registering new exercise type.");
     connect(actTngTraining, &QAction::triggered, this, &MainWindow::actTngTrainingTriggered);
 
     /*System (Sys) Actions*/
-    actSysUsers = new QAction(tr("Users"));
-    actSysUsers->setIcon(QIcon("://images/user.png"));
-    actSysUsers->setToolTip(tr("System user registration"));
-    //actSysUsers->setShortcut(QKeySequence("Ctrl+U"));
-    actSysUsers->setStatusTip(tr("Registration of new user for this system."));
+
+    actSysUsers = createAction( tr("Users"),"://images/user.png",
+                                  tr("System user registration"),"Ctrl+",
+                                  "Registration of new user for this system.");
     connect(actSysUsers, &QAction::triggered, this, &MainWindow::actSysUsersTriggered);
 
-    actSysPreferences = new QAction(tr("Preferences"));
-    actSysPreferences->setIcon(QIcon("://images/preferences.png"));
-    actSysPreferences->setToolTip(tr("System preferences config"));
-    //actSysPreferences->setShortcut(QKeySequence("Ctrl+P"));
-    actSysPreferences->setStatusTip(tr("System preferences configurations."));
+
+    actSysPreferences = createAction( tr("Preferences"),"://images/preferences.png",
+                                        tr("System preferences config"),"Ctrl+",
+                                        "System preferences configurations.");
     connect(actSysPreferences, &QAction::triggered, this, &::MainWindow::actSysPreferencesTriggered);
 
     /*Work Schedule*/
-    actWksSchedule = new QAction(tr("Schedule"));
-    actWksSchedule->setIcon(QIcon("://images/schedule.png"));
-    actWksSchedule->setToolTip(tr("Gym Schedule"));
-    //actWksSchedule->setShortcut(QKeySequence("Ctrl+P"));
-    actWksSchedule->setStatusTip(tr("Gym Schedule for treiners and athletics"));
+
+    actWksSchedule = createAction( tr("Schedule"),"://images/schedule.png",
+                     tr("Gym Schedule"),"Ctrl+",
+                     "Gym Schedule for treiners and athletics");
     connect(actWksSchedule, &QAction::triggered, this, &MainWindow::actWksScheduleTriggered);
 
-    actWksCalendar = new QAction(tr("Calendar"));
-    actWksCalendar->setIcon(QIcon("://images/calendar.png"));
-    actWksCalendar->setToolTip(tr("Gym Calendar"));
-    //actWksCalendar->setShortcut(QKeySequence("Ctrl+P"));
-    actWksCalendar->setStatusTip(tr("Gym Calendar for treiners and athletics"));
+
+    actWksCalendar = createAction( tr("Calendar"),"://images/calendar.png",
+                     tr("Gym Calendar"),"Ctrl+",
+                     "Gym Calendar for treiners and athletics");
     connect(actWksCalendar, &QAction::triggered, this, &MainWindow::actWksCalendarTriggered);
 
     /*Help Actions*/
-    actHlpAbout = new QAction(tr("About"));
-    actHlpAbout->setIcon(QIcon("://images/about.png"));
-    actHlpAbout->setToolTip(tr("Information about TrainMax"));
-    actHlpAbout->setStatusTip(tr("Application information and acknowledgements"));
+
+    actHlpAbout = createAction( tr("About"),"://images/about.png",
+                     tr("Information about TrainMax"),"Ctrl+",
+                     "Application information and acknowledgements");
     connect(actHlpAbout, &QAction::triggered, this, &MainWindow::actHlpAboutTriggered);
 
-    actHlpDocumentation = new QAction(tr("Documentation"));
-    actHlpDocumentation->setIcon(QIcon("://images/documentation.png"));
-    actHlpDocumentation->setToolTip(tr("The documentation of the TrainMax"));
-    actHlpDocumentation->setStatusTip(tr("The documentation step-by-step of the application use."));
+    actHlpDocumentation = createAction( tr("Documentation"),"://images/documentation.png",
+                                  tr("The documentation of the TrainMax"),"Ctrl+",
+                                  "The documentation step-by-step of the application use.");
     connect(actHlpDocumentation, &QAction::triggered, this, &MainWindow::actHlpDocumentationTriggered);
 }
 
@@ -228,7 +214,6 @@ void MainWindow::createToolBar(){
     tbrRecordsTools->addSeparator();
     tbrRecordsTools->addAction(actTngTraining);
 
-
     QWidget *spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     tbrRecordsTools->addWidget(spacer);
@@ -246,69 +231,69 @@ void MainWindow::createStatusBar(){
 /*SLOTS*/
 //Rcd
 void MainWindow::actRcdTrainerTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Registro de Treinador em construção!");
 }
 
 void MainWindow::actRcdProfilesTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Registro de Profiles em construção!");
 }
 
 void MainWindow::actRcdClientsTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Registro de Clientes em construção!");
 }
 
 //Csf
 void MainWindow::actCsfReceiptsTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Recebimentos em construção!");
 }
 
 void MainWindow::actCsfPaymentTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Pagamentos em construção!");
 }
 
 void MainWindow::actCsfTypesTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Tipos em fluxo de caixa em construção!");
 }
 
 //Shp
 void MainWindow::actShpProductsTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Produtos em construção!");
 }
 
 //Tng
 void MainWindow::actTngAddExercisesTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Exercícios em construção!");
 }
 
 void MainWindow::actTngTrainingTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Treinamento em construção!");
 }
 
 void MainWindow::actShpSaleTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Vendas em construção!");
 }
 
 //Eqp
 void MainWindow::actEqpNewEquipmentTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Novo equipamento em construção!");
 }
 
 //Wks
 void MainWindow::actWksScheduleTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Escala em construção!");
 }
 
 void MainWindow::actWksCalendarTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Calendário em construção!");
 }
 
 //Sys
 void MainWindow::actSysUsersTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Usuários em construção!");
 }
 
 void MainWindow::actSysPreferencesTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Preferencias em construção!");
 }
 
 //Hlp
@@ -322,5 +307,5 @@ void MainWindow::actHlpAboutTriggered(){
 }
 
 void MainWindow::actHlpDocumentationTriggered(){
-    QMessageBox::warning(this,"Warning", "Em construção!");
+    QMessageBox::warning(this,"Warning", "Documentação em construção!");
 }

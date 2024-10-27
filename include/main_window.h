@@ -53,6 +53,10 @@ class MainWindow: public QMainWindow{
         void createToolBar();
         void createStatusBar();
 
+        QAction* createAction( QString name="", QString icon_path = "",
+                             QString tool_tip = "", QString short_cut="",
+                             QString status_tip="");
+
         /*ACTIONS*/
 
         /*Records (Rcd) Actions*/
